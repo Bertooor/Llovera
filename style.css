@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: #2e3099;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+body {
+  padding: 3rem 3rem 0 3rem;
+  background-color: #b3ddff;
+}
+
+body header {
+  display: flex;
+}
+
+body header img {
+  height: 50px;
+}
+
+body header h1 {
+  margin: 0 auto;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+section.localizacion ul,
+section.busqueda ul {
+  border: 1px solid #2e3099;
+  border-radius: 25px;
+  margin: 2.5rem 0;
+  background-color: #ffe1b3;
+  box-shadow: rgba(46, 48, 153, 0.4) 5px 5px 5px;
+}
+
+section.localizacion ul:first-child li {
+  list-style: none;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+section.localizacion ul:first-child li:last-child {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 2rem;
+}
+
+section.localizacion ul:last-child li,
+section.busqueda ul li {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  font-size: 1.2rem;
+}
+
+section.localizacion ul:last-child li h2,
+section.busqueda ul li h2 {
+  padding: 1rem;
+  text-align: center;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+section.localizacion ul:last-child li span,
+section.busqueda ul li span {
+  display: flex;
+  align-items: center;
+}
+
+section.busqueda form {
+  display: flex;
+  justify-content: space-between;
+}
+
+section.busqueda form input {
+  border: 2px solid #2e3099;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+section.busqueda form button {
+  font-size: 1rem;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+  font-size: 25px;
+  padding: 0 1rem;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}
+
+section.busqueda form button i {
+  color: white;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+}
+
+footer a {
+  text-decoration: none;
+}
