@@ -10,12 +10,19 @@
 }
 
 body {
-  padding: 3rem 3rem 0 3rem;
+  padding: 2rem 3rem 0 3rem;
   background-color: #b3ddff;
 }
 
+/**
+ * ############
+ * ## Header ##
+ * ############
+ */
+
 body header {
   display: flex;
+  align-items: center;
 }
 
 body header img {
@@ -34,6 +41,51 @@ body header h1 {
   -webkit-background-clip: text;
   color: transparent;
 }
+
+/**
+ * ################
+ * ## Formulario ##
+ * ################
+ */
+
+main form {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+}
+
+main form input {
+  border: 2px solid #2e3099;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+main form button {
+  font-size: 1rem;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+  padding: 0 1rem;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+}
+
+main form button i {
+  color: white;
+}
+
+/**
+ * ############
+ * ## Listas ##
+ * ############
+ */
 
 section.localizacion ul,
 section.busqueda ul {
@@ -90,38 +142,15 @@ section.busqueda ul li span {
   align-items: center;
 }
 
-section.busqueda form {
-  display: flex;
-  justify-content: space-between;
+section.busqueda ul {
+  visibility: hidden;
 }
 
-section.busqueda form input {
-  border: 2px solid #2e3099;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  padding: 0.5rem;
-  font-size: 1rem;
-  width: 100%;
-}
-
-section.busqueda form button {
-  font-size: 1rem;
-  background-image: linear-gradient(
-    225deg,
-    #ff3cac 0%,
-    #784ba0 50%,
-    #2b86c5 100%
-  );
-  font-size: 25px;
-  padding: 0 1rem;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  cursor: pointer;
-}
-
-section.busqueda form button i {
-  color: white;
-}
+/**
+ * ############
+ * ## Footer ##
+ * ############
+ */
 
 footer {
   text-align: center;
@@ -130,4 +159,91 @@ footer {
 
 footer a {
   text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  /**
+ * ############
+ * ## Header ##
+ * ############
+ */
+
+  body header {
+    justify-content: space-around;
+  }
+
+  body header img {
+    height: 100px;
+    margin-left: auto;
+  }
+
+  body header h1 {
+    font-size: 3rem;
+    margin-right: auto;
+  }
+
+  /**
+ * ################
+ * ## Formulario ##
+ * ################
+ */
+
+  main form {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  main form input {
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
+
+  main form button {
+    padding: 0 2rem;
+    font-size: 1.5rem;
+  }
+
+  /**
+ * ############
+ * ## Listas ##
+ * ############
+ */
+
+  section.localizacion ul,
+  section.busqueda ul {
+    max-width: 70%;
+    margin: 3rem auto;
+  }
+
+  section.localizacion ul:first-child li,
+  section.localizacion ul:last-child li,
+  section.busqueda ul li {
+    font-size: 1.5rem;
+  }
+
+  section.localizacion ul:first-child li:last-child {
+    font-size: 2.7rem;
+  }
+
+  /**
+ * ############
+ * ## Footer ##
+ * ############
+ */
+
+  footer {
+    padding: 2rem 0;
+    font-size: 2rem;
+  }
+
+  footer a {
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    max-width: 850px;
+    margin: 0 auto;
+  }
 }

@@ -4,6 +4,12 @@ const error = document.createElement("p");
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 
+/**
+ * #########################
+ * ## Funcione para fecha ##
+ * #########################
+ */
+
 const diaSemana = (fecha) =>
   ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"][
     new Date(fecha).getDay()
@@ -32,6 +38,12 @@ const hora = (fecha) => new Date(fecha).toLocaleTimeString();
 const fechaPersonalizada = (fecha) => {
   return `${diaSemana(fecha)} ${dia(fecha)} ${mes(fecha)} ${hora(fecha)}`;
 };
+
+/**
+ * ###############################
+ * ## Funcion ubicación usuario ##
+ * ###############################
+ */
 
 const climaPosicionUsuario = async (posicion) => {
   try {
@@ -151,6 +163,12 @@ const geolocalizacion = () => {
 };
 geolocalizacion();
 
+/**
+ * ############################################
+ * ## Funcion clima por búsqueda de ciudades ##
+ * ############################################
+ */
+
 const climaBusqueda = async (posicion) => {
   const respuesta = await fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${posicion}&appid=${API_KEY}&units=metric`
@@ -159,7 +177,7 @@ const climaBusqueda = async (posicion) => {
   const datos = await respuesta.json();
   console.log("datosBusqueda: ", datos);
 
-  const ul3 = document.createElement("ul");
+  const ul3 = document.getElementById("buscar");
 
   ul3.innerHTML = `
 
@@ -243,6 +261,11 @@ const onSubmit = (e) => {
   e.preventDefault();
 
   climaBusqueda(input.value);
+
+  const ul3 = document.getElementById("buscar");
+  ul3.style.cssText = `visibility: visible;`;
+
+  input.value = "";
 };
 
 form.addEventListener("submit", onSubmit);

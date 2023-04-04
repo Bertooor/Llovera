@@ -14,18 +14,19 @@
       <h1>¿Lloverá?</h1>
     </header>
     <main>
+      <form>
+        <input
+          type="search"
+          name="buscar"
+          placeholder="Escribe una ciudad..."
+        />
+        <button onclick="location.href='#buscar'">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
       <section class="localizacion"></section>
       <section class="busqueda">
-        <form>
-          <input
-            type="search"
-            name="buscar"
-            placeholder="Escribe una ciudad..."
-          />
-          <button>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </form>
+        <ul id="buscar"></ul>
       </section>
     </main>
     <footer>
