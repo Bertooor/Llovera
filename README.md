@@ -6,6 +6,10 @@
 
 2. Colocando una ciudad te dará el tiempo de los próximos 5 días en dicha ciudad.
 
+## Importante
+
+- Debes permitir la ubicación en tu navegador para que la aplicación pueda ofrecer el tiempo en ella.
+
 ## Recomendación
 
 - Puedes utilizar la API_KEY del repositorio pero te recomiendo que te crees una en https://openweathermap.org/
