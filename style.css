@@ -82,6 +82,36 @@ main form button i {
 }
 
 /**
+ * #############
+ * ## Spinner ##
+ * #############
+ */
+
+body main div.spinner {
+  margin: 3rem auto;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border-left-color: #2e3099;
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body main div#spinner {
+  display: none;
+}
+
+/**
  * ############
  * ## Listas ##
  * ############
@@ -89,6 +119,7 @@ main form button i {
 
 section.localizacion ul,
 section.busqueda ul {
+  display: none;
   border: 1px solid #2e3099;
   border-radius: 25px;
   margin: 2.5rem 0;
@@ -143,7 +174,15 @@ section.busqueda ul li span {
 }
 
 section.busqueda ul {
+  display: block;
   visibility: hidden;
+}
+
+p {
+  color: red;
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
 /**
@@ -211,6 +250,7 @@ footer a {
 
   section.localizacion ul,
   section.busqueda ul {
+    display: none;
     max-width: 70%;
     margin: 3rem auto;
   }
@@ -223,6 +263,11 @@ footer a {
 
   section.localizacion ul:first-child li:last-child {
     font-size: 2.7rem;
+  }
+
+  section.busqueda ul {
+    display: block;
+    visibility: hidden;
   }
 
   /**

@@ -1,6 +1,5 @@
 const API_KEY = "6dcfbe4f5d769224af0c28453d74d3e7";
 
-const error = document.createElement("p");
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 
@@ -152,9 +151,16 @@ const climaPosicionUsuario = async (posicion) => {
     `;
 
     section.append(ul2);
+
+    const spinner = document.querySelector("div");
+
+    cargando(spinner, ul, ul2);
   } catch (error) {
-    error.textContent = error.message;
-    ul2.append(error);
+    const errores = document.createElement("p");
+    const ul2 = document.createElement("ul");
+    errores.textContent = "Lo siento ocurrió un error, prueba de nuevo.";
+
+    ul2.append(errores);
   }
 };
 
@@ -163,6 +169,12 @@ const geolocalizacion = () => {
 };
 geolocalizacion();
 
+const cargando = (spinner, elemento, elemento2) => {
+  spinner.style.display = "none";
+  elemento.style.display = "block";
+  elemento2.style.display = "block";
+};
+
 /**
  * ############################################
  * ## Funcion clima por búsqueda de ciudades ##
@@ -170,91 +182,99 @@ geolocalizacion();
  */
 
 const climaBusqueda = async (posicion) => {
-  const respuesta = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${posicion}&appid=${API_KEY}&units=metric`
-  );
+  try {
+    const respuesta = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${posicion}&appid=${API_KEY}&units=metric`
+    );
 
-  const datos = await respuesta.json();
-  console.log("datosBusqueda: ", datos);
+    const datos = await respuesta.json();
+    console.log("datosBusqueda: ", datos);
 
-  const ul3 = document.getElementById("buscar");
+    const ul3 = document.getElementById("buscar");
 
-  ul3.innerHTML = `
+    ul3.innerHTML = `
+      
+      <li>
+        <h2>
+          Próximos 5 días en ${datos.city.name}, ${datos.city.country}
+        </h2>    
+      </li>
+      
+      <li>
+        ${fechaPersonalizada(datos.list[1].dt_txt)} 
+        <span>
+          ${Math.round(datos.list[1].main.temp)}°C 
+          <img src=${`https://openweathermap.org/img/wn/${datos.list[1].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
+        </span>
+      </li>
+      
+      <li>
+        ${fechaPersonalizada(datos.list[3].dt_txt)}
+        <span> 
+          ${Math.round(datos.list[3].main.temp)}°C 
+          <img src=${`https://openweathermap.org/img/wn/${datos.list[3].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
+        </span>
+      </li>
+      
+      <li>
+        ${fechaPersonalizada(datos.list[5].dt_txt)}
+        <span> 
+          ${Math.round(datos.list[5].main.temp)}°C 
+          <img src=${`https://openweathermap.org/img/wn/${datos.list[5].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
+        </span>
+      </li>
+      
+      <li>
+        ${fechaPersonalizada(datos.list[7].dt_txt)}
+        <span> 
+          ${Math.round(datos.list[7].main.temp)}°C 
+          <img src=${`https://openweathermap.org/img/wn/${datos.list[7].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
+        </span>
+      </li>
+      
+      <li>
+        ${fechaPersonalizada(datos.list[15].dt_txt)}
+        <span> 
+          ${Math.round(datos.list[15].main.temp)}°C 
+          <img src=${`https://openweathermap.org/img/wn/${datos.list[15].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
+        </span>
+      </li>
+      
+      <li>
+        ${fechaPersonalizada(datos.list[23].dt_txt)}
+        <span> 
+          ${Math.round(datos.list[23].main.temp)}°C 
+          <img src=${`https://openweathermap.org/img/wn/${datos.list[23].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
+        </span>
+      </li>
+      
+      <li>
+        ${fechaPersonalizada(datos.list[31].dt_txt)}
+        <span> 
+          ${Math.round(datos.list[31].main.temp)}°C 
+          <img src=${`https://openweathermap.org/img/wn/${datos.list[31].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
+        </span>
+      </li>
+      
+      <li>
+        ${fechaPersonalizada(datos.list[39].dt_txt)}
+        <span> 
+          ${Math.round(datos.list[39].main.temp)}°C 
+          <img src=${`https://openweathermap.org/img/wn/${datos.list[39].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
+        </span>
+      </li>
+    `;
 
-    <li>
-      <h2>
-        Próximos 5 días en ${datos.city.name}, ${datos.city.country}
-      </h2>    
-    </li>
+    const section2 = document.querySelector("section.busqueda");
 
-    <li>
-      ${fechaPersonalizada(datos.list[1].dt_txt)} 
-      <span>
-        ${Math.round(datos.list[1].main.temp)}°C 
-        <img src=${`https://openweathermap.org/img/wn/${datos.list[1].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
-      </span>
-    </li>
+    section2.append(ul3);
+  } catch (error) {
+    const errores = document.createElement("p");
+    const ul3 = document.getElementById("buscar");
+    errores.textContent = "Lo siento ocurrió un error, prueba de nuevo.";
 
-    <li>
-      ${fechaPersonalizada(datos.list[3].dt_txt)}
-      <span> 
-        ${Math.round(datos.list[3].main.temp)}°C 
-        <img src=${`https://openweathermap.org/img/wn/${datos.list[3].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
-      </span>
-    </li>
-
-    <li>
-      ${fechaPersonalizada(datos.list[5].dt_txt)}
-      <span> 
-        ${Math.round(datos.list[5].main.temp)}°C 
-        <img src=${`https://openweathermap.org/img/wn/${datos.list[5].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
-      </span>
-    </li>
-
-    <li>
-      ${fechaPersonalizada(datos.list[7].dt_txt)}
-      <span> 
-        ${Math.round(datos.list[7].main.temp)}°C 
-        <img src=${`https://openweathermap.org/img/wn/${datos.list[7].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
-      </span>
-    </li>
-
-    <li>
-      ${fechaPersonalizada(datos.list[15].dt_txt)}
-      <span> 
-        ${Math.round(datos.list[15].main.temp)}°C 
-        <img src=${`https://openweathermap.org/img/wn/${datos.list[15].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
-      </span>
-    </li>
-
-    <li>
-      ${fechaPersonalizada(datos.list[23].dt_txt)}
-      <span> 
-        ${Math.round(datos.list[23].main.temp)}°C 
-        <img src=${`https://openweathermap.org/img/wn/${datos.list[23].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
-      </span>
-    </li>
-
-    <li>
-      ${fechaPersonalizada(datos.list[31].dt_txt)}
-      <span> 
-        ${Math.round(datos.list[31].main.temp)}°C 
-        <img src=${`https://openweathermap.org/img/wn/${datos.list[31].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
-      </span>
-    </li>
-
-    <li>
-      ${fechaPersonalizada(datos.list[39].dt_txt)}
-      <span> 
-        ${Math.round(datos.list[39].main.temp)}°C 
-        <img src=${`https://openweathermap.org/img/wn/${datos.list[39].weather[0].icon}@2x.png`} alt='icono tiempo' /> 
-      </span>
-    </li>
-  `;
-
-  const section2 = document.querySelector("section.busqueda");
-
-  section2.append(ul3);
+    ul3.append(errores);
+  }
 };
 
 const onSubmit = (e) => {
@@ -263,7 +283,7 @@ const onSubmit = (e) => {
   climaBusqueda(input.value);
 
   const ul3 = document.getElementById("buscar");
-  ul3.style.cssText = `visibility: visible;`;
+  ul3.style.cssText = "visibility: visible;";
 
   input.value = "";
 };
