@@ -4,9 +4,9 @@ const form = document.querySelector("form");
 const input = document.querySelector("input");
 
 /**
- * #########################
- * ## Funcione para fecha ##
- * #########################
+ * ########################
+ * ## Función para fecha ##
+ * ########################
  */
 
 const diaSemana = (fecha) =>
@@ -40,7 +40,7 @@ const fechaPersonalizada = (fecha) => {
 
 /**
  * ###############################
- * ## Funcion ubicación usuario ##
+ * ## Función ubicación usuario ##
  * ###############################
  */
 
@@ -53,7 +53,6 @@ const climaPosicionUsuario = async (posicion) => {
     );
 
     const datos = await respuesta.json();
-    console.log("datos: ", datos);
 
     const section = document.querySelector("section.localizacion");
 
@@ -74,7 +73,6 @@ const climaPosicionUsuario = async (posicion) => {
     );
 
     const datos2 = await respuesta2.json();
-    console.log("datos2: ", datos2);
 
     const ul2 = document.createElement("ul");
 
@@ -177,7 +175,7 @@ const cargando = (spinner, elemento, elemento2) => {
 
 /**
  * ############################################
- * ## Funcion clima por búsqueda de ciudades ##
+ * ## Función clima por búsqueda de ciudades ##
  * ############################################
  */
 
@@ -188,7 +186,6 @@ const climaBusqueda = async (posicion) => {
     );
 
     const datos = await respuesta.json();
-    console.log("datosBusqueda: ", datos);
 
     const ul3 = document.getElementById("buscar");
 
